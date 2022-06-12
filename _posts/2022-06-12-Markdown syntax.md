@@ -50,9 +50,9 @@ def code(codeblock):
 		return False
 ```
 ```markdown
-```yaml
-entity_id: sensor.example
-```
+	```yaml
+	entity_id: sensor.example
+	```
 ```
 
 ## Prompts
