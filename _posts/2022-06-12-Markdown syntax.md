@@ -4,7 +4,7 @@ date: 2022-06-12 14:25:40 +2
 categories: [PROGRAMING]
 tags: [programming]     # TAG names should always be lowercase
 ---
-
+![L1p0 Inndustries Logo](https://i.imgur.com/JeX5nMc.png)
 # Markdown Cheatsheet
 
 ## Headers
@@ -85,4 +85,9 @@ def code(codeblock):
 {: .prompt-danger }
 ```
 
+## Kép
 
+Olyan képet mint a logom:
+```markdown
+![Example img text](https://exampleurl/exampleimage.png)
+```
