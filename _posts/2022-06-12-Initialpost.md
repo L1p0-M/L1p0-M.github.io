@@ -5,7 +5,7 @@ categories: [HARDWARE]
 tags: [hardware, raspberrypi]     # TAG names should always be lowercase
 ---
 
-# Homelab Hardware
+![L1p0 Inndustries Logo](https://i.imgur.com/JeX5nMc.png)
 
 Ebben a postban a Homelab-em hardwerjeiről fogok írni,amin a docker container-jeim futnak...
 
