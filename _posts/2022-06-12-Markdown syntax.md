@@ -11,26 +11,26 @@ tags: [programming]     # TAG names should always be lowercase
 
 ### Ilyen header
 
-```Markdown
+```markdown
 ### example
 ```
 
 > **Header**-t a "**#**" karakterrel lehet létrehozni, minél több a "#", annál "alkategóriájúbb" a header!
-{: prompt-info }
+{: .prompt-info }
 
 ## Alap wordformatting
 
 *Ilyen döntés*
-```Markdown
+```markdown
 *example*
 _example_
 ```
 **Ilyen félkövér**
-```Markdown
+```markdown
 **example**
 ```
 ~~Ilyen áthúzás~~
-```Markdown
+```markdown
 ~~example~~
 ```
 
@@ -39,25 +39,25 @@ _example_
 
 > Ilyen tipp block:
 {: .prompt-tip }
-```Markdown
+```markdown
 > example
 {: .prompt-tip }
 ```
 > Ilyen info block:
 {: .prompt-info }
-```Markdown
+```markdown
 > example
 {: .prompt-info }
 ```
 > Ilyen warning block:
 {: .prompt-warning }
-```Markdown
+```markdown
 > example
 {: .prompt-warning }
 ```
 > Ilyen danger block:
 {: .prompt-danger }
-```Markdown
+```markdown
 > example
 {: .prompt-danger }
 ```
