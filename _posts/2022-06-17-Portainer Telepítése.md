@@ -19,7 +19,7 @@ Portainer is meant to be as simple to deploy as it is to use.
 
 ### Első lépés
 
-A conainer adatait tartalmazó mappa létrehozása:
+A container adatait tartalmazó mappa létrehozása:
 
 ```bash
 cd /dockerconfig

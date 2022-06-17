@@ -19,7 +19,7 @@ A személyes médiától a saját szerverén, az ingyenes és igény szerinti fi
 
 ### Első lépés
 
-A conainer configját tartalmazó mappa létrehozása:
+A container configját tartalmazó mappa létrehozása:
 
 ```bash
 cd /dockerconfig
