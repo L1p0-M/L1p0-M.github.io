@@ -42,11 +42,11 @@ A containerek configját tartalmazó mappák létrehozása:
 /
 └── dockerconfig 
     ├── jackett
-        └── config
+    │   └── config
     ├── radarr
-        └── config	
+    │   └── config	
     ├── qbittorrent
-        └── config
+    │   └── config
     └── ombi
         └── config
 ```
