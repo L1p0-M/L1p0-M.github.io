@@ -67,4 +67,4 @@ docker-compose up -d --force-recreate
 ```
 
 Amikor végzett már el is érjük az új containert a weboldalon:
-> http://<host-ip>:9000
+> http://host-ip:9000
