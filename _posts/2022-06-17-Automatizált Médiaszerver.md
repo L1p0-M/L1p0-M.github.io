@@ -251,7 +251,7 @@ docker-compose up -d --force-recreate
 #### Harmadik lépés
 
 Mivel portot nem map-eltünk a hostra,ezért az Nginx Proxy Managerben kell beállítanunk a hozzá tartozó domaint/subdomaint:
-![NPM Config](/assets/img/NPM_Ombi.png)
+![NPM Config](/assets/img/NPM_Ombi.png){: width="440" height="499" }
 > Mivel a containert az Nginx Proxy Manager-rel egy networkre kapcsoltuk, containernév alapján be tudja azonosítani
 {: .prompt-info }
 
