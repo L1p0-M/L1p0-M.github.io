@@ -56,7 +56,7 @@ services:
       - /dockerconfig/plex/config:/config
       - /hdd/series:/series
       - /hdd/plex:/movies
-	  - /hdd/preroll:/preroll
+      - /hdd/preroll:/preroll
     restart: unless-stopped
 ```
 
