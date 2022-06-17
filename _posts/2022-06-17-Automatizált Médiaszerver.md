@@ -1,6 +1,6 @@
 ---
 title: Automatizált Médiaszerver
-date: 2022-06-17 12:44:00 +2
+date: 2022-06-17 14:04:00 +2
 categories: [DOCKER]
 tags: [docker-compose, docker]     # TAG names should always be lowercase
 ---
@@ -241,17 +241,19 @@ networks:
 
 #### Második lépés
 
-Ezután már csak el kell indítani a containert a `docker-compose.yml`{: .filepath} fájlból:
+Ezután el kell indítani a containert a `docker-compose.yml`{: .filepath} fájlból:
 
 ```shell
 cd /dockerconfig/ombi
 docker-compose up -d --force-recreate
 ```
 
-#### Negyedik lépés
+#### Harmadik lépés
 
 Mivel portot nem map-eltünk a hostra,ezért az Nginx Proxy Managerben kell beállítanunk a hozzá tartozó domaint/subdomaint:
 ![NPM Config](/assets/img/NPM_Ombi.png)
+> Mivel a containert az Nginx Proxy Manager-rel egy networkre kapcsoltuk, containernév alapján be tudja azonosítani
+{: .prompt-info }
 
 Ezután már el is érjük az új containert a weboldalon:
 > http(s)://ombi.exampledomain.hu
