@@ -5,4 +5,4 @@ categories: [CAT]
 tags: [tag, tag2]     # TAG names should always be lowercase
 ---
 
-![L1p0 Inndustries Logo](https://i.imgur.com/JeX5nMc.png)
+![L1p0 Industries Logo](https://i.imgur.com/JeX5nMc.png)
