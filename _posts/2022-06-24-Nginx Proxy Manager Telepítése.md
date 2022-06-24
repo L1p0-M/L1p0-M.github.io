@@ -108,5 +108,6 @@ Amikor végzett már el is érjük az új containert a weboldalon:
 
 Alapértelmezett Admin felhasználó:
 
-> Email:    admin@example.com
-> Password: changeme
+> **Email:    admin@example.com**
+>
+> **Password: changeme**
