@@ -17,7 +17,7 @@ NPM is based on an Nginx server and provides users with a clean, efficient, and 
 
 ### Mi az a Reverse Proxy?
 A Reverse Proxy egy szerver ami webszerverek előtt ül és átirányítja a klienseket a webszerverekhez.
-![Reverse Proxy Flow](/assets/img/reverse-proxy.svg)
+![Reverse Proxy Flow](/assets/img/reverse_proxy.webp)
 
 Az ábrán látható módon a kliens el akar jutni "example.com" domain-el jelzett webszerverhez és a Reverse Proxy átirányítja a megfelelő szerverhez.
 
