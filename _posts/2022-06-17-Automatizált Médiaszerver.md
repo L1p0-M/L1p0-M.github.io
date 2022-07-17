@@ -7,7 +7,7 @@ tags: [docker-compose, docker]     # TAG names should always be lowercase
 
 ![L1p0 Industries Logo](https://i.imgur.com/JeX5nMc.png)
 
-# Jackett, Radarr, qBittorrent, Ombi
+# Jackett, Radarr, qBittorrent, Sonarr, Tautulli, Ombi
 
 ## Mi is a Jackett?
 
