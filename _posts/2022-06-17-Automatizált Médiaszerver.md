@@ -58,10 +58,10 @@ A containerek configját tartalmazó mappák létrehozása:
     │   └── config	
     ├── qbittorrent
     │   └── config
-	├── sonarr
-	│   └── config
-	├── tautulli
-	│   └── config
+    ├── sonarr
+    │   └── config
+    ├── tautulli
+    │   └── config
     └── ombi
         └── config
 ```
