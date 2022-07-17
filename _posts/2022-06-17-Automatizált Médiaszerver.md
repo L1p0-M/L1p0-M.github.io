@@ -24,6 +24,17 @@ Radarr is an independent fork of Sonarr reworked for automatically downloading m
 
 Ahogy a nevéből is látható, a qBittorrent egy Torrent kliens.
 
+## Mi is a Sonarr?
+
+Sonarr is a PVR for Usenet and BitTorrent users.
+
+> Röviden: A Sonarr egy automatikus sorozat letöltő
+{: .prompt-info }
+
+## Mi is a Tautulli?
+
+Tautulli is a monitoring application that you can run alongside your Plex Media Server and tracks what has been streamed, who streamed it, when and where they streamed it, and how it was streamed.
+
 ## Mi is az Ombi?
 
 Ombi is a self-hosted web application that automatically gives your shared Plex, Emby or Jellyfin users the ability to request content by themselves!
@@ -47,15 +58,17 @@ A containerek configját tartalmazó mappák létrehozása:
     │   └── config	
     ├── qbittorrent
     │   └── config
+	├── sonarr
+	│   └── config
+	├── tautulli
+	│   └── config
     └── ombi
         └── config
 ```
 
-Az "*rr" network létrehozása:
+Mivel mindent **https**-en keresztül akarunk elérni,ezért mindent a reverseproxy networkre kapcsolunk!
+Ezért nincs is szükség a portokat expose-olni a containerből!
 
-```bash
-docker network create *rr
-```
 
 ### Jackett telepítése
 
@@ -84,12 +97,10 @@ services:
     volumes:
       - /dockerconfig/jackett/config:/config
       - /hdd/Movies:/downloads
-    ports:
-      - 9117:9117
     restart: unless-stopped
 networks:
   default:
-    name: "*rr"
+    name: "reverseproxy"
     external: true
 ```
 
@@ -102,8 +113,7 @@ cd /dockerconfig/jackett
 docker-compose up -d --force-recreate
 ```
 
-Amikor végzett már el is érjük az új containert a weboldalon:
-> http://host-ip:9117
+Amikor végzett már csak a reverseproxy-ban kell a 9117-es portra domaint mapelnünk!
 
 ### Radarr telepítése
 
@@ -135,12 +145,10 @@ services:
     volumes:
       - /dockerconfig/radarr/config:/config
       - /hdd:/hdd
-    ports:
-      - 7878:7878
     restart: unless-stopped
 networks:
   default:
-    name: "*rr"
+    name: "reverseproxy"
     external: true
 ```
 
@@ -153,8 +161,8 @@ cd /dockerconfig/radarr
 docker-compose up -d --force-recreate
 ```
 
-Amikor végzett már el is érjük az új containert a weboldalon:
-> http://host-ip:7878
+Amikor végzett már csak a reverseproxy-ban kell a 7878-as portra domaint mapelnünk!
+
 
 ### qBittorrent telepítése
 
@@ -189,6 +197,10 @@ services:
       - 51000:51000
       - 51000:51000/udp
     restart: unless-stopped
+networks:
+  default:
+    name: "reverseproxy"
+    external: true
 ```
 
 #### Második lépés
@@ -202,6 +214,99 @@ docker-compose up -d --force-recreate
 
 Amikor végzett már el is érjük az új containert a weboldalon:
 > http://host-ip:8300
+És már csak a reverseproxy-ban kell a 8300-as portra domaint mapelnünk!
+
+### Sonarr telepítése
+
+#### Első lépés
+
+A docker-compose fájl létrehozása:
+
+```shell
+cd /dockerconfig/sonarr
+touch docker-compose.yml
+```
+
+A `/dockerconfig/sonarr/docker-compose.yml`{: .filepath } fájlba:
+
+```yaml
+---
+version: "2.1"
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Budapest
+      - DOCKER_MODS=ghcr.io/gilbn/theme.park:sonarr
+      - TP_COMMUNITY_THEME=true
+      - TP_THEME=space
+    volumes:
+      - /dockerconfig/sonarr/config:/config
+      - /hdd:/hdd
+    restart: unless-stopped
+networks:
+  default:
+    name: "reverseproxy"
+    external: true
+```
+
+#### Második lépés
+
+Ezután már csak el kell indítani a containert a `docker-compose.yml`{: .filepath} fájlból:
+
+```shell
+cd /dockerconfig/sonarr
+docker-compose up -d --force-recreate
+```
+
+Amikor végzett már csak a reverseproxy-ban kell a 8989-es portra domaint mapelnünk!
+
+### Tautulli telepítése
+
+#### Első lépés
+
+A docker-compose fájl létrehozása:
+
+```shell
+cd /dockerconfig/tautulli
+touch docker-compose.yml
+```
+
+A `/dockerconfig/tautulli/docker-compose.yml`{: .filepath } fájlba:
+
+```yaml
+---
+version: "2.1"
+services:
+  tautulli:
+    image: lscr.io/linuxserver/tautulli:latest
+    container_name: Tautulli
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Budapest
+    volumes:
+      - /dockerconfig/tautulli/config:/config
+    restart: unless-stopped
+networks:
+  default:
+    name: "reverseproxy"
+    external: true
+```
+
+#### Második lépés
+
+Ezután már csak el kell indítani a containert a `docker-compose.yml`{: .filepath} fájlból:
+
+```shell
+cd /dockerconfig/tautulli
+docker-compose up -d --force-recreate
+```
+
+Amikor végzett már csak a reverseproxy-ban kell a 8181-es portra domaint mapelnünk!
 
 ### Ombi telepítése
 
@@ -250,7 +355,7 @@ docker-compose up -d --force-recreate
 
 #### Harmadik lépés
 
-Mivel portot nem map-eltünk a hostra,ezért az Nginx Proxy Managerben kell beállítanunk a hozzá tartozó domaint/subdomaint:
+Mivel portokat nem map-eltünk a hostra,ezért az Nginx Proxy Managerben kell beállítanunk a hozzá tartozó domaint/subdomaint:
 ![NPM Config](/assets/img/NPM_Ombi.png){: width="440" height="499" }
 > Mivel a containert az Nginx Proxy Manager-rel egy networkre kapcsoltuk, containernév alapján be tudja azonosítani
 {: .prompt-info }
